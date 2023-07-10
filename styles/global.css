@@ -1,0 +1,36 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=Poppins:wght@400;500;600;700;800;900&display=swap");
+
+* {
+  font-family: "Inter", sans-serif;
+  font-family: "Poppins", sans-serif;
+}
+
+body > div#__next {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+main {
+  flex: 1;
+}
+
+.slick-next::before,
+.slick-prev::before {
+  /* color: #131214;
+  background: #131214; */
+  visibility: hidden;
+  /* display: none; */
+}
+
+.slick-next:hover,
+.slick-prev:hover {
+  cursor: default;
+}
+
+input[type="checkbox"] {
+  display: grid;
+  grid-template-columns: 20px;
+  cursor: pointer;
+}

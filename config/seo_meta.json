@@ -1,0 +1,25 @@
+{
+  "title": "STORE-NAME",
+  "titleTemplate": "%s - ACME Storefront",
+  "description": "Shopify-nextjs - shopifynextjs-boilerplate.vercel.app/",
+  "openGraph": {
+    "title": "STORE-NAME",
+    "description": "Shopify-nextjs - shopifynextjs-boilerplate.vercel.app/",
+    "type": "website",
+    "url": "shopifynextjs-boilerplate.vercel.app/",
+    "site_name": "Shopify-nextjs Commerce",
+    "images": [
+      {
+        "url": "/card.png",
+        "width": "800",
+        "height": "600",
+        "alt": "Shopify-nextjs Commerce"
+      }
+    ]
+  },
+  "twitter": {
+    "handle": "@nextjs",
+    "site": "@nextjs",
+    "cardType": "summary_large_image"
+  }
+}

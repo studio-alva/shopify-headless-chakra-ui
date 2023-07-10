@@ -1,0 +1,41 @@
+{
+  "name": "shopify-headles",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "cross-env NODE_OPTIONS='--openssl-legacy-provider --inspect' next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.13.17",
+    "@chakra-ui/icons": "^2.0.17",
+    "@chakra-ui/react": "^2.4.9",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@types/shopify-buy": "^2.10.5",
+    "cross-env": "^7.0.3",
+    "framer-motion": "^8.5.4",
+    "graphql": "^15.5.0",
+    "graphql-request": "^3.4.0",
+    "lodash": "^4.17.21",
+    "next": "^13.1.6",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.7.1",
+    "react-infinite-scroll-component": "^6.1.0",
+    "react-slick": "^0.29.0",
+    "shopify-buy": "^2.11.0",
+    "swiper": "^6.5.9"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.171",
+    "@types/node": "^14.14.41",
+    "@types/react": "^18.0.27",
+    "autoprefixer": "^10.2.5",
+    "eslint": "^7.32.0",
+    "eslint-config-next": "^11.0.1",
+    "typescript": "~4.3.2"
+  }
+}

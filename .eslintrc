@@ -1,0 +1,7 @@
+{
+  "extends": "next",
+  // don't want to update to canary version and still work normally
+  "rules": {
+    "@next/next/no-document-import-in-page": "off"
+  }
+}
