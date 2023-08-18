@@ -44,7 +44,7 @@ const ProductList: React.FC = () => {
           slidesToShow: 4,
           slidesToScroll: 1,
         },
-      }
+      },
     ],
   };
 
@@ -108,54 +108,53 @@ const ProductList: React.FC = () => {
             <Tabs variant="enclosed">
               <Slider {...settings} ref={(slider) => setSlider(slider)}>
                 {product.images.map((item, idx) => (
-                  <>
-                    <Tab
-                      p={0}
-                      m={0}
-                      rounded={0}
-                      mx={2}
-                      display="flex"
-                      justifyContent="center"
-                      alignItems="center"
-                      border-collapse="collapse"
-                      backgroundColor="transparent"
+                  <Tab
+                    key={idx}
+                    p={0}
+                    m={0}
+                    rounded={0}
+                    mx={2}
+                    display="flex"
+                    justifyContent="center"
+                    alignItems="center"
+                    border-collapse="collapse"
+                    backgroundColor="transparent"
+                    cursor="pointer"
+                    onMouseEnter={() => setImageId(item.id)}
+                    onMouseLeave={() =>
+                      setImageId(preview ? preview : defaultImageId)
+                    }
+                    onClick={() => changeImage(item.id)}
+                    _selected={
+                      setImageId
+                        ? {
+                            border: "1px solid black",
+                          }
+                        : { border: "0px solid black" }
+                    }
+                  >
+                    <Image
+                      key={idx}
+                      src={item.src}
+                      alt={item.id}
+                      width={{
+                        base: 100,
+                        sm: 200,
+                        md: 200,
+                        lg: 200,
+                        xl: 100,
+                      }}
+                      height={{
+                        base: 100,
+                        sm: 100,
+                        md: 200,
+                        lg: 200,
+                        xl: 100,
+                      }}
+                      // objectFit="cover"
                       cursor="pointer"
-                      onMouseEnter={() => setImageId(item.id)}
-                      onMouseLeave={() =>
-                        setImageId(preview ? preview : defaultImageId)
-                      }
-                      onClick={() => changeImage(item.id)}
-                      _selected={
-                        setImageId
-                          ? {
-                              border: "1px solid black",
-                            }
-                          : { border: "0px solid black" }
-                      }
-                    >
-                      <Image
-                        key={idx}
-                        src={item.src}
-                        alt={item.id}
-                        width={{
-                          base: 100,
-                          sm: 200,
-                          md: 200,
-                          lg: 200,
-                          xl: 100,
-                        }}
-                        height={{
-                          base: 100,
-                          sm: 100,
-                          md: 200,
-                          lg: 200,
-                          xl: 100,
-                        }}
-                        // objectFit="cover"
-                        cursor="pointer"
-                      />
-                    </Tab>
-                  </>
+                    />
+                  </Tab>
                 ))}
               </Slider>
             </Tabs>
@@ -165,7 +164,7 @@ const ProductList: React.FC = () => {
         <>
           {Array.from(new Array(4)).map((_, idx) => (
             <Box key={idx}>
-              <Skeleton height="20px" />
+              <Skeleton height="20px" key={idx} />
             </Box>
           ))}
         </>

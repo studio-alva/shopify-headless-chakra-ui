@@ -75,7 +75,11 @@ const Options: React.FC<Props> = ({ productOption }) => {
       <Flex fontWeight={600} fontSize="md" mb={4} gap={1}>
         <Text> {optionName}</Text>
         <Text color="#8B8B8B">
-          (Panduan {optionName.toLowerCase() === "size" ? optionName + " ─ EU" : optionName})
+          (Panduan{" "}
+          {optionName.toLowerCase() === "size"
+            ? optionName + " ─ EU"
+            : optionName}
+          )
         </Text>
       </Flex>
       <Tabs
@@ -89,25 +93,23 @@ const Options: React.FC<Props> = ({ productOption }) => {
       >
         {productOption.values.map((value, idx) => {
           return (
-            <>
-              <Tab
-                key={idx}
-                h="70px"
-                w="70px"
-                display="flex"
-                justifyContent="center"
-                alignItems="center"
-                border-collapse="collapse"
-                border={"1px"}
-                borderColor="gray.200"
-                backgroundColor="transparent"
-                cursor="pointer"
-                _selected={{ color: "black", fontWeight: 600, border: "1px" }}
-                onClick={handleClick}
-              >
-                {value}
-              </Tab>
-            </>
+            <Tab
+              key={idx}
+              h="70px"
+              w="70px"
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+              border-collapse="collapse"
+              border={"1px"}
+              borderColor="gray.200"
+              backgroundColor="transparent"
+              cursor="pointer"
+              _selected={{ color: "black", fontWeight: 600, border: "1px" }}
+              onClick={handleClick}
+            >
+              {value}
+            </Tab>
           );
         })}
       </Tabs>

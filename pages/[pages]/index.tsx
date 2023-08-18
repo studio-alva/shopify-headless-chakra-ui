@@ -76,7 +76,9 @@ const CategoryPage: React.FC<Props> = ({ pages }) => {
     try {
       result = await getCollections();
       data = await getDataCollections(category);
-      const categoryResult = result?.collection.filter((i) => i.title.toLowerCase() == category.toLowerCase());
+      const categoryResult = result?.collection.filter(
+        (i) => i.title.toLowerCase() == category.toLowerCase()
+      );
 
       setCollection(categoryResult[0]);
       setDataCollection(data.collection[0]);
@@ -130,7 +132,7 @@ const CategoryPage: React.FC<Props> = ({ pages }) => {
         <Accordion defaultIndex={[0]} allowMultiple>
           {filter.map((filters, idx) => {
             return (
-              <>
+              <div key={idx}>
                 <AccordionItem>
                   <AccordionButton
                     _expanded={{ bg: "gray.300", color: "black" }}
@@ -150,30 +152,24 @@ const CategoryPage: React.FC<Props> = ({ pages }) => {
                   <AccordionPanel pb={4}>
                     {filters.option.map((item, idx) => {
                       return (
-                        <>
-                          <CheckboxGroup colorScheme="green">
-                            <Stack
-                              spacing={[1, 5]}
-                              direction={["column"]}
-                              py={2}
+                        <CheckboxGroup colorScheme="green" key={idx}>
+                          <Stack spacing={[1, 5]} direction={["column"]} py={2}>
+                            <Checkbox
+                              key={idx}
+                              fontWeight={500}
+                              onChange={(e) =>
+                                handleChecked(e.target.checked, item)
+                              }
                             >
-                              <Checkbox
-                                key={idx}
-                                fontWeight={500}
-                                onChange={(e) =>
-                                  handleChecked(e.target.checked, item)
-                                }
-                              >
-                                {item}
-                              </Checkbox>
-                            </Stack>
-                          </CheckboxGroup>
-                        </>
+                              {item}
+                            </Checkbox>
+                          </Stack>
+                        </CheckboxGroup>
                       );
                     })}
                   </AccordionPanel>
                 </AccordionItem>
-              </>
+              </div>
             );
           })}
         </Accordion>

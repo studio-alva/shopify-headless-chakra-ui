@@ -97,7 +97,7 @@ const Header: React.FC = () => {
         mt={3}
       >
         {listSection.map((section) => (
-          <ListItem fontWeight={400}>
+          <ListItem fontWeight={400} key={section.name}>
             <Link href={section.url} as={NextLink}>
               {" "}
               {section.name}
@@ -174,18 +174,16 @@ const Header: React.FC = () => {
                     </Flex>
 
                     {listSection.map((item, idx) => (
-                      <>
-                        <Box>
-                          <Link
-                            as={NextLink}
-                            href={item.url}
-                            fontWeight={500}
-                            key={idx}
-                          >
-                            {item.name}
-                          </Link>
-                        </Box>
-                      </>
+                      <Box key={idx}>
+                        <Link
+                          as={NextLink}
+                          href={item.url}
+                          fontWeight={500}
+                          key={idx}
+                        >
+                          {item.name}
+                        </Link>
+                      </Box>
                     ))}
                   </Stack>
                 </Box>

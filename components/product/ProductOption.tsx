@@ -64,17 +64,15 @@ const ProductOption: React.FC = () => {
           Jumlah
         </Text>
         <Select
-          w={20} 
+          w={20}
           // onChange={changeVariant}
           // value={currentValue}
         >
           {optionQty.map((value, idx) => {
             return (
-              <>
-                <option value={value} key={idx}>
-                  {value}
-                </option>
-              </>
+              <option value={value} key={idx}>
+                {value}
+              </option>
             );
           })}
         </Select>
