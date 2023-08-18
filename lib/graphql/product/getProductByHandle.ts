@@ -66,7 +66,10 @@ const fetchProduct = async (handle: string) => {
             node {
               availableForSale
               id
-              price
+              price {
+                amount
+                currencyCode
+              }
               image {
                 id
                 originalSrc
@@ -89,33 +92,38 @@ const fetchProduct = async (handle: string) => {
 
   const res = await customClient.request(query, variables).catch((err) => {
     throw new Error(err);
+    return null;
   });
 
   return res;
 };
 
 const adjustIntoResult = (res: any): getProductResult => {
-  const { descriptionHtml, title, options } = res.productByHandle;
+  try {
+    const { descriptionHtml, title, options } = res.productByHandle;
 
-  const images = res.productByHandle.images.edges.map((edge) => {
-    const image = edge.node;
-    return {
-      id: image.id,
-      src: image.originalSrc,
+    const images = res.productByHandle.images.edges.map((edge) => {
+      const image = edge.node;
+      return {
+        id: image.id,
+        src: image.originalSrc,
+      };
+    });
+    const variants: Variant[] = res.productByHandle.variants.edges.map(
+      (edge) => edge.node
+    );
+    const product: Product = {
+      descriptionHtml,
+      title,
+      images,
+      options,
+      variants,
     };
-  });
-  const variants: Variant[] = res.productByHandle.variants.edges.map(
-    (edge) => edge.node
-  );
-  const product: Product = {
-    descriptionHtml,
-    title,
-    images,
-    options,
-    variants,
-  };
-  const result = {
-    product,
-  };
-  return result;
+    const result = {
+      product,
+    };
+    return result;
+  } catch (error) {
+    return null;
+  }
 };

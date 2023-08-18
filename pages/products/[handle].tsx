@@ -46,7 +46,7 @@ const ProductPage: React.FC<Props> = ({ handle, variantId }) => {
 
   const fetchData = async () => {
     const result: getProductResult = await getProductByHandle(handle);
-    const prd = result.product;
+    const prd = result?.product;
 
     let initialVariant: Variant;
     if (variantId) {
@@ -55,7 +55,7 @@ const ProductPage: React.FC<Props> = ({ handle, variantId }) => {
     }
 
     const initialImageId: string = (initialVariant?.image?.id ||
-      prd.images[0].id) as string;
+      prd?.images[0]?.id) as string;
 
     setImageId(initialImageId);
 
